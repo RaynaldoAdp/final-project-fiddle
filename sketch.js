@@ -7,7 +7,7 @@ gridArray.push(grid);
 function setup(){
 	createCanvas(501, 501);
 	background(100);
-	frameRate(60);
+	frameRate(20);
 }
 
 function draw(){
@@ -20,17 +20,8 @@ function draw(){
 
 }
 
-function mouseClicked() {
-	if(pmouseX - mouseX > 0){
-		console.log(pmouseX-mouseX)
-		object1.clicked();
-	}
-}
-
 function mouseDragged() {
-	if(pmouseX - mouseX > 0){
   		object1.clicked();
-  	}
 }
 
 $(document).ready(function(){

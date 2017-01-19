@@ -2,8 +2,8 @@
 var Object1 = function(x, y){
 	this.x = x || 0;
 	this.y = y || 0;
-	this.width = 100;
-	this.length = 50;
+	this.width = 300;
+	this.length = 100;
 }
 
 Object1.prototype.show = function(){
@@ -15,17 +15,25 @@ Object1.prototype.show = function(){
 }
 
 Object1.prototype.clicked = function(){
-	if(mouseX - this.x > 0 && mouseX - this.x < 100 && mouseY - this.y > 0 && mouseY - this.y < 50){
+	if(mouseX - this.x > 0 && mouseX - this.x < this.width && mouseY - this.y > 0 && mouseY - this.y < this.length){
+		if(mouseX - pmouseX > 2){
 			this.x +=10;
-
-
+		}
+		if(mouseY - pmouseY > 2){
 			this.y +=10;
+		}
+		if(mouseX - pmouseX < -2){
+			this.x -= 10;
+		}
+		if(mouseY - pmouseY < -2){
+			this.y -= 10;
+		}
 
 	}
 }
 
 Object1.prototype.cursor = function(){
-	if(mouseX - this.x > 0 && mouseX - this.x < 100 && mouseY - this.y > 0 && mouseY - this.y < 50){
+	if(mouseX - this.x > 0 && mouseX - this.x < this.width && mouseY - this.y > 0 && mouseY - this.y < this.length){
 		cursor(MOVE);
 	}
 	else{
