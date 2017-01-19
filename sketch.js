@@ -1,5 +1,5 @@
 var gridArray = [];
-var object1 = new Object1(100,100);
+var objects = [];
 
 var grid = new Grid();
 gridArray.push(grid);
@@ -7,26 +7,34 @@ gridArray.push(grid);
 function setup(){
 	createCanvas(501, 501);
 	background(100);
-	frameRate(20);
+	frameRate(60);
 }
 
 function draw(){
 	for(var i = 0; i< gridArray.length; i++){
 		gridArray[i].show();
+		gridArray[i].show2();
 	}
 
-	object1.show();
-	object1.cursor();
+	for(var i =0; i< objects.length; i++){
+		objects[i].show();
+		objects[i].cursor();
+	}
+
 
 }
 
 function mouseDragged() {
-  		object1.clicked();
+  		objects[0].clicked();
 }
 
 $(document).ready(function(){
-	$('button').click(function(){
-		object1.rotate();
+	$('#rotate').click(function(){
+		objects[0].rotate();
+	})
+
+	$('#generate1').click(function(){
+		objects.push(new Object1(100,100));
 	})
 })
 

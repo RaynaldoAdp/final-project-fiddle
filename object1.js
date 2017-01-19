@@ -4,6 +4,7 @@ var Object1 = function(x, y){
 	this.y = y || 0;
 	this.width = 300;
 	this.length = 100;
+	this.rotation = 0;
 }
 
 Object1.prototype.show = function(){
@@ -14,26 +15,40 @@ Object1.prototype.show = function(){
 	pop();
 }
 
-Object1.prototype.clicked = function(){
-	if(mouseX - this.x > 0 && mouseX - this.x < this.width && mouseY - this.y > 0 && mouseY - this.y < this.length){
-		if(mouseX - pmouseX > 2){
-			this.x +=10;
-		}
-		if(mouseY - pmouseY > 2){
-			this.y +=10;
-		}
-		if(mouseX - pmouseX < -2){
-			this.x -= 10;
-		}
-		if(mouseY - pmouseY < -2){
-			this.y -= 10;
-		}
-
+Object1.prototype.condition = function(){
+	if(this.rotation === 0){
+		return mouseX - this.x > 0 && mouseX - this.x < this.width && mouseY - this.y > 0 && mouseY - this.y < this.length;
+	}
+	else if(this.rotation === 90){
+		return mouseX - this.x < 0 && mouseX - this.x > this.width && mouseY - this.y > 0 && mouseY - this.y < this.length;
+	}
+	else if(this.rotation === 180){
+		return mouseX - this.x < 0 && mouseX - this.x > this.width && mouseY - this.y < 0 && mouseY - this.y > this.length;
+	}
+	else if(this.rotation === 270){
+		return mouseX - this.x > 0 && mouseX - this.x < this.width && mouseY - this.y < 0 && mouseY - this.y > this.length;
 	}
 }
 
+Object1.prototype.clicked = function(){
+		if(this.condition()){
+			if(mouseX - pmouseX > 2){
+				this.x +=10;
+			}
+			if(mouseY - pmouseY > 2){
+				this.y +=10;
+			}
+			if(mouseX - pmouseX < -2){
+				this.x -= 10;
+			}
+			if(mouseY - pmouseY < -2){
+				this.y -= 10;
+			}
+		}
+}
+
 Object1.prototype.cursor = function(){
-	if(mouseX - this.x > 0 && mouseX - this.x < this.width && mouseY - this.y > 0 && mouseY - this.y < this.length){
+	if(this.condition()){
 		cursor(MOVE);
 	}
 	else{
@@ -45,4 +60,10 @@ Object1.prototype.rotate = function(){
 	var store = this.width;
 	this.width = this.length * -1;
 	this.length = store;
+
+	this.rotation += 90;
+	if(this.rotation === 360){
+		this.rotation = 0;
+	}
+	console.log(this.x, this.y, this.width, this.length);
 }
