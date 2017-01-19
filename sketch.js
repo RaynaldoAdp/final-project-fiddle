@@ -28,22 +28,18 @@ function draw(){
 }
 
 function mouseDragged() {
-	if(mode1){
   		objects[0].clicked();
-  	}
-  	if(mode2){
   		objects[1].clicked();
-  	}
 }
 
 $(document).ready(function(){
-	$('#rotate').click(function(){
-		objects[0].rotate();
+	$('form').submit(function(event){
+		event.preventDefault();
+		generate();
 	})
 
-	$('#generate1').click(function(){
-		mode1= true;
-		objects.push(new Object1(100,100));
+	$('#rotate').click(function(){
+		objects[0].rotate();
 	})
 
 	$('#rotate2').click(function(){
@@ -56,6 +52,16 @@ $(document).ready(function(){
 		mode1= false;
 	})
 })
+
+function generate(){
+	$('#generate1').click(function(){
+		var x = $('#width').val();
+		var y = $('#width').val();
+		console.log(x,y);
+		mode1= true;
+		objects.push(new Object1(0,0,x,y));
+	})
+}
 
 
 

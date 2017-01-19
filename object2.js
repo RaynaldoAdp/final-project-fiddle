@@ -2,8 +2,8 @@
 var Object2 = function(x, y){
 	this.x = x || 0;
 	this.y = y || 0;
-	this.width = 300;
-	this.length = 100;
+	this.width = width || 300;
+	this.length = length || 100;
 	this.rotation = 0;
 }
 

@@ -1,15 +1,15 @@
 //note to self. Dont need to use transformations. just change the x and y coordinates accordingly to prevent headaches;
-var Object1 = function(x, y){
+var Object1 = function(x, y, width, length){
 	this.x = x || 0;
 	this.y = y || 0;
-	this.width = 300;
-	this.length = 100;
+	this.width = width || 300;
+	this.length = length || 100;
 	this.rotation = 0;
 }
 
 Object1.prototype.show = function(){
 	push();
-	fill(255);
+	fill(255,0,0);
 	rect(this.x, this.y, this.width, this.length);
 	rect(this.x, this.y, this.width/2, this.length/2);
 	pop();
