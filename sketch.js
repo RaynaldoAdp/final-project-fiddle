@@ -1,5 +1,5 @@
 var gridArray = [];
-var object1 = new Object1(0,0);
+var object1 = new Object1(100,100);
 
 var grid = new Grid();
 gridArray.push(grid);
@@ -16,13 +16,30 @@ function draw(){
 	}
 
 	object1.show();
+	object1.cursor();
 
-	ellipse(0,0,50);
 }
 
 function mouseClicked() {
-	object1.clicked();
+	if(pmouseX - mouseX > 0){
+		console.log(pmouseX-mouseX)
+		object1.clicked();
+	}
 }
+
+function mouseDragged() {
+	if(pmouseX - mouseX > 0){
+  		object1.clicked();
+  	}
+}
+
+$(document).ready(function(){
+	$('button').click(function(){
+		object1.rotate();
+	})
+})
+
+
 
 
 
