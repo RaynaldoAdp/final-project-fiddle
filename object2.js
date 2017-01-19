@@ -1,5 +1,5 @@
 //note to self. Dont need to use transformations. just change the x and y coordinates accordingly to prevent headaches;
-var Object1 = function(x, y){
+var Object2 = function(x, y){
 	this.x = x || 0;
 	this.y = y || 0;
 	this.width = 300;
@@ -7,7 +7,7 @@ var Object1 = function(x, y){
 	this.rotation = 0;
 }
 
-Object1.prototype.show = function(){
+Object2.prototype.show = function(){
 	push();
 	fill(255);
 	rect(this.x, this.y, this.width, this.length);
@@ -15,7 +15,7 @@ Object1.prototype.show = function(){
 	pop();
 }
 
-Object1.prototype.condition = function(){
+Object2.prototype.condition = function(){
 	if(this.rotation === 0){
 		return mouseX - this.x > 0 && mouseX - this.x < this.width && mouseY - this.y > 0 && mouseY - this.y < this.length;
 	}
@@ -30,7 +30,7 @@ Object1.prototype.condition = function(){
 	}
 }
 
-Object1.prototype.clicked = function(){
+Object2.prototype.clicked = function(){
 		if(this.condition()){
 			console.log(mouseX - pmouseX);
 
@@ -131,7 +131,7 @@ Object1.prototype.clicked = function(){
 		}
 }
 
-Object1.prototype.cursor = function(){
+Object2.prototype.cursor = function(){
 	if(this.condition()){
 		cursor(MOVE);
 	}
@@ -140,7 +140,7 @@ Object1.prototype.cursor = function(){
 	}
 }
 
-Object1.prototype.rotate = function(){
+Object2.prototype.rotate = function(){
 	var store = this.width;
 	this.width = this.length * -1;
 	this.length = store;

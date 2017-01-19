@@ -1,6 +1,9 @@
 var gridArray = [];
 var objects = [];
 
+var mode1 = false;
+var mode2 = false;
+
 var grid = new Grid();
 gridArray.push(grid);
 
@@ -25,7 +28,12 @@ function draw(){
 }
 
 function mouseDragged() {
+	if(mode1){
   		objects[0].clicked();
+  	}
+  	if(mode2){
+  		objects[1].clicked();
+  	}
 }
 
 $(document).ready(function(){
@@ -34,7 +42,18 @@ $(document).ready(function(){
 	})
 
 	$('#generate1').click(function(){
+		mode1= true;
 		objects.push(new Object1(100,100));
+	})
+
+	$('#rotate2').click(function(){
+		objects[1].rotate();
+	})
+
+	$('#generate2').click(function(){
+		objects.push(new Object2(300,300));
+		mode2= true;
+		mode1= false;
 	})
 })
 
